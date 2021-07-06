@@ -11,8 +11,11 @@ function renderCoffee(coffee) {
 }
 
 function renderCoffees(coffees) {
+    coffees = coffees.sort(function(a, b){
+        return a.id-b.id
+    })
     var html = '';
-    for(var i = coffees.length - 1; i >= 0; i--) {
+    for(var i=0; i< coffees.length ; i++) {
         html += renderCoffee(coffees[i]);
     }
     return html;

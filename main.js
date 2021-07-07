@@ -23,19 +23,19 @@ function renderCoffees(coffees) {
 
 function updateCoffees(e) {
     e.preventDefault(); // don't submit the form, we just want to update the data
-    // var selectedRoast = roastSelection.value;
+    var selectedRoast = roastSelection.value;
     var searchText = searchBar.value;
     var filteredCoffees = [];
-    // coffees.forEach(function(coffee) {
-    //     if (coffee.roast === selectedRoast && coffees.name === searchText) {
-    //         filteredCoffees.push(coffee);
-    //     }
-    // });
     coffees.forEach(function(coffee) {
-        if (coffee.name.includes(searchText)) {
+        if (coffee.roast === selectedRoast && coffee.name.includes(searchText)) {
             filteredCoffees.push(coffee);
         }
     });
+    // coffees.forEach(function(coffee) {
+    //     if (coffee.name.includes(searchText)) {
+    //         filteredCoffees.push(coffee);
+    //     }
+    // });
     tbody.innerHTML = renderCoffees(filteredCoffees);
 }
 
@@ -73,5 +73,5 @@ var searchBar = document.querySelector('#searchBar');
 
 tbody.innerHTML = renderCoffees(coffees);
 
-submitButton.addEventListener('click', updateCoffees);
+roastSelection.addEventListener('change', updateCoffees);
 searchBar.addEventListener('input', updateCoffees);

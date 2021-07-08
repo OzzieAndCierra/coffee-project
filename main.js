@@ -27,15 +27,10 @@ function updateCoffees(e) {
     var searchText = searchBar.value;
     var filteredCoffees = [];
     coffees.forEach(function(coffee) {
-        if (coffee.roast === selectedRoast && coffee.name.includes(searchText)) {
+        if ((coffee.roast === selectedRoast || selectedRoast === "All")&& coffee.name.toLowerCase().includes(searchText.toLowerCase())) {
             filteredCoffees.push(coffee);
         }
     });
-    // coffees.forEach(function(coffee) {
-    //     if (coffee.name.includes(searchText)) {
-    //         filteredCoffees.push(coffee);
-    //     }
-    // });
     tbody.innerHTML = renderCoffees(filteredCoffees);
 }
 
